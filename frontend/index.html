@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Blood Bank Management</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand"><span class="brand-icon">✚</span><div><strong>BloodBank</strong><small>Management System</small></div></div>
+    <nav>
+      <button class="nav active" data-page="dashboard">▦ <span>Dashboard</span></button>
+      <button class="nav" data-page="donors">♙ <span>Donors</span></button>
+      <button class="nav" data-page="add">＋ <span>Add donor</span></button>
+      <button class="nav" data-page="inventory">▤ <span>Inventory</span></button>
+    </nav>
+    <div class="local-note"><span class="dot"></span> Running on this computer</div>
+  </aside>
+  <main class="main">
+    <header><div><p class="eyebrow">BLOOD BANK OPERATIONS</p><h1 id="page-title">Dashboard</h1></div><button class="btn secondary" id="refresh">↻ Refresh</button></header>
+    <div id="notice" class="notice" hidden></div>
+    <section id="dashboard" class="page active">
+      <div class="stats"><article class="stat"><span>Total donors</span><strong id="donor-count">—</strong><small>Registered records</small></article><article class="stat"><span>Total blood units</span><strong id="unit-count">—</strong><small>Across all groups</small></article><article class="stat"><span>Blood groups</span><strong>8</strong><small>Tracked categories</small></article></div>
+      <article class="panel"><div class="panel-head"><div><h2>Inventory overview</h2><p>Available units by blood group</p></div><button class="text-btn" data-go="inventory">Manage inventory →</button></div><div id="dashboard-stocks" class="stock-grid"></div></article>
+      <article class="panel"><div class="panel-head"><div><h2>Recent donors</h2><p>Latest registered records</p></div><button class="text-btn" data-go="donors">View all →</button></div><div id="recent-donors"></div></article>
+    </section>
+    <section id="donors" class="page">
+      <article class="panel"><div class="panel-head"><div><h2>Donor registry</h2><p>Search and manage donor records</p></div><button class="btn primary" data-go="add">＋ Add donor</button></div><input id="search" class="search" placeholder="Search by name, ID or blood group…"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Blood group</th><th>Weight</th><th>Phone</th><th>Actions</th></tr></thead><tbody id="donor-rows"></tbody></table></div></article>
+    </section>
+    <section id="add" class="page">
+      <article class="panel form-panel"><div class="panel-head"><div><h2 id="form-heading">Register donor</h2><p>Enter the donor's details below</p></div></div>
+        <form id="donor-form"><input type="hidden" id="edit-id"><div class="form-grid">
+          <label>Full name<input id="name" required maxlength="63" placeholder="Donor full name"></label>
+          <label>Age<input id="age" type="number" min="1" max="120" required></label>
+          <label>Gender<select id="gender"><option value="M">Male (M)</option><option value="F">Female (F)</option><option value="O">Other (O)</option></select></label>
+          <label>Weight (kg)<input id="weight" type="number" min="1" max="300" step="0.1" required></label>
+          <label>Blood group<select id="blood_group" required><option value="">Select group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
+          <label>Phone<input id="phone" maxlength="23" placeholder="Contact number"></label>
+        </div>
+        <label class="check"><input id="has_donated_before" type="checkbox"> Donated blood previously</label>
+        <div id="date-fields" class="form-grid date-fields" hidden><label>Last donation day<input id="day" type="number" min="1" max="31"></label><label>Month<input id="month" type="number" min="1" max="12"></label><label>Year<input id="year" type="number" min="1900" max="2100"></label></div>
+        <div class="form-actions"><button class="btn primary" type="submit" id="save-btn">Save donor</button><button class="btn secondary" type="reset">Clear</button></div></form>
+      </article>
+    </section>
+    <section id="inventory" class="page"><article class="panel"><div class="panel-head"><div><h2>Blood inventory</h2><p>Current stock levels</p></div><strong id="inventory-total" class="total-pill">— units</strong></div><div id="inventory-stocks" class="stock-grid large"></div></article>
+      <div class="inventory-actions"><article class="panel"><h2>Restock units</h2><p>Add units to a blood group</p><form id="restock-form" class="stack"><label>Blood group<select id="restock-group" required></select></label><label>Units<input id="restock-units" type="number" min="1" max="100000" required></label><button class="btn primary">Add units</button></form></article><article class="panel"><h2>Dispense units</h2><p>Deduct units from a blood group</p><form id="dispense-form" class="stack"><label>Blood group<select id="dispense-group" required></select></label><label>Units<input id="dispense-units" type="number" min="1" max="100000" required></label><button class="btn primary">Dispense units</button></form></article></div>
+    </section>
+    <footer>Blood Bank Management System · Local application · C99 backend</footer>
+  </main>
+  <script src="app.js"></script>
+</body></html>
