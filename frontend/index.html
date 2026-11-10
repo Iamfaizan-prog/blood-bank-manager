@@ -1,50 +1,340 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Blood Bank Management</title><link rel="stylesheet" href="style.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="#181211">
+  <title>BloodBank · Management System</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23a41f30'/%3E%3Cpath d='M16 5c0 5.2-6.7 8.2-6.7 13a6.7 6.7 0 0 0 13.4 0C22.7 13.2 16 10.2 16 5Z' fill='%23f7f2ea'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <aside class="sidebar">
-    <div class="brand"><span class="brand-icon">✚</span><div><strong>BloodBank</strong><small>Management System</small></div></div>
-    <nav>
-      <button class="nav active" data-page="dashboard">▦ <span>Dashboard</span></button>
-      <button class="nav" data-page="donors">♙ <span>Donors</span></button>
-      <button class="nav" data-page="add">＋ <span>Add donor</span></button>
-      <button class="nav" data-page="inventory">▤ <span>Inventory</span></button>
+  <svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+    <symbol id="i-dashboard" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/>
+      <rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/>
+    </symbol>
+    <symbol id="i-users" viewBox="0 0 24 24">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+    </symbol>
+    <symbol id="i-user-plus" viewBox="0 0 24 24">
+      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+      <line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/>
+    </symbol>
+    <symbol id="i-archive" viewBox="0 0 24 24">
+      <rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/>
+      <line x1="10" y1="12" x2="14" y2="12"/>
+    </symbol>
+    <symbol id="i-refresh" viewBox="0 0 24 24">
+      <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+      <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/>
+    </symbol>
+    <symbol id="i-search" viewBox="0 0 24 24">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </symbol>
+    <symbol id="i-pencil" viewBox="0 0 24 24">
+      <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/><path d="m15 5 4 4"/>
+    </symbol>
+    <symbol id="i-trash" viewBox="0 0 24 24">
+      <path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/>
+      <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+      <line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/>
+    </symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24">
+      <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+    </symbol>
+    <symbol id="i-droplet" viewBox="0 0 24 24">
+      <path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-2.7-5.5C14.8 8 13.5 5.5 12 2c-1.5 3.5-2.8 6-4.3 7.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7Z"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <path d="M20 6 9 17l-5-5"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+    </symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/>
+    </symbol>
+    <symbol id="i-x" viewBox="0 0 24 24">
+      <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+    </symbol>
+  </svg>
+
+  <aside class="rail">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" focusable="false"><path d="M16 5c0 5.2-6.7 8.2-6.7 13a6.7 6.7 0 0 0 13.4 0C22.7 13.2 16 10.2 16 5Z"/></svg>
+      </span>
+      <span class="brand-text"><strong>BloodBank</strong><small>Management system</small></span>
+    </div>
+
+    <nav class="rail-nav" aria-label="Workspace">
+      <p class="rail-label">Workspace</p>
+      <button type="button" class="nav active" data-page="dashboard" title="Dashboard" aria-label="Dashboard">
+        <svg class="icon" aria-hidden="true"><use href="#i-dashboard"/></svg><span>Dashboard</span>
+      </button>
+      <button type="button" class="nav" data-page="donors" title="Donors" aria-label="Donors">
+        <svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><span>Donors</span>
+      </button>
+      <button type="button" class="nav" data-page="add" title="Add donor" aria-label="Add donor">
+        <svg class="icon" aria-hidden="true"><use href="#i-user-plus"/></svg><span>Add donor</span>
+      </button>
+      <button type="button" class="nav" data-page="inventory" title="Inventory" aria-label="Inventory">
+        <svg class="icon" aria-hidden="true"><use href="#i-archive"/></svg><span>Inventory</span>
+      </button>
     </nav>
-    <div class="local-note"><span class="dot"></span> Running on this computer</div>
+
+    <div class="rail-foot">
+      <div class="local-card">
+        <span class="status-dot" aria-hidden="true"></span>
+        <div><strong>Local session</strong><small>C99 core · 127.0.0.1</small></div>
+      </div>
+      <p class="rail-version">Single user · stored on this computer</p>
+    </div>
   </aside>
+
   <main class="main">
-    <header><div><p class="eyebrow">BLOOD BANK OPERATIONS</p><h1 id="page-title">Dashboard</h1></div><button class="btn secondary" id="refresh">↻ Refresh</button></header>
-    <div id="notice" class="notice" hidden></div>
-    <section id="dashboard" class="page active">
-      <div class="stats"><article class="stat"><span>Total donors</span><strong id="donor-count">—</strong><small>Registered records</small></article><article class="stat"><span>Total blood units</span><strong id="unit-count">—</strong><small>Across all groups</small></article><article class="stat"><span>Blood groups</span><strong>8</strong><small>Tracked categories</small></article></div>
-      <article class="panel"><div class="panel-head"><div><h2>Inventory overview</h2><p>Available units by blood group</p></div><button class="text-btn" data-go="inventory">Manage inventory →</button></div><div id="dashboard-stocks" class="stock-grid"></div></article>
-      <article class="panel"><div class="panel-head"><div><h2>Recent donors</h2><p>Latest registered records</p></div><button class="text-btn" data-go="donors">View all →</button></div><div id="recent-donors"></div></article>
-    </section>
-    <section id="donors" class="page">
-      <article class="panel"><div class="panel-head"><div><h2>Donor registry</h2><p>Search and manage donor records</p></div><button class="btn primary" data-go="add">＋ Add donor</button></div><input id="search" class="search" placeholder="Search by name, ID or blood group…"><div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Blood group</th><th>Weight</th><th>Phone</th><th>Actions</th></tr></thead><tbody id="donor-rows"></tbody></table></div></article>
-    </section>
-    <section id="add" class="page">
-      <article class="panel form-panel"><div class="panel-head"><div><h2 id="form-heading">Register donor</h2><p>Enter the donor's details below</p></div></div>
-        <form id="donor-form"><input type="hidden" id="edit-id"><div class="form-grid">
-          <label>Full name<input id="name" required maxlength="63" placeholder="Donor full name"></label>
-          <label>Age<input id="age" type="number" min="1" max="120" required></label>
-          <label>Gender<select id="gender"><option value="M">Male (M)</option><option value="F">Female (F)</option><option value="O">Other (O)</option></select></label>
-          <label>Weight (kg)<input id="weight" type="number" min="1" max="300" step="0.1" required></label>
-          <label>Blood group<select id="blood_group" required><option value="">Select group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option><option>AB+</option><option>AB-</option><option>O+</option><option>O-</option></select></label>
-          <label>Phone<input id="phone" maxlength="23" placeholder="Contact number"></label>
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar-title">
+          <p class="page-meta"><span class="status-dot" aria-hidden="true"></span><span id="today">—</span><span class="meta-sep">·</span>Local workspace</p>
+          <h1 id="page-title">Dashboard</h1>
         </div>
-        <label class="check"><input id="has_donated_before" type="checkbox"> Donated blood previously</label>
-        <div id="date-fields" class="form-grid date-fields" hidden><label>Last donation day<input id="day" type="number" min="1" max="31"></label><label>Month<input id="month" type="number" min="1" max="12"></label><label>Year<input id="year" type="number" min="1900" max="2100"></label></div>
-        <div class="form-actions"><button class="btn primary" type="submit" id="save-btn">Save donor</button><button class="btn secondary" type="reset">Clear</button></div></form>
-      </article>
-    </section>
-    <section id="inventory" class="page"><article class="panel"><div class="panel-head"><div><h2>Blood inventory</h2><p>Current stock levels</p></div><strong id="inventory-total" class="total-pill">— units</strong></div><div id="inventory-stocks" class="stock-grid large"></div></article>
-      <div class="inventory-actions"><article class="panel"><h2>Restock units</h2><p>Add units to a blood group</p><form id="restock-form" class="stack"><label>Blood group<select id="restock-group" required></select></label><label>Units<input id="restock-units" type="number" min="1" max="100000" required></label><button class="btn primary">Add units</button></form></article><article class="panel"><h2>Dispense units</h2><p>Deduct units from a blood group</p><form id="dispense-form" class="stack"><label>Blood group<select id="dispense-group" required></select></label><label>Units<input id="dispense-units" type="number" min="1" max="100000" required></label><button class="btn primary">Dispense units</button></form></article></div>
-    </section>
-    <footer>Blood Bank Management System · Local application · C99 backend</footer>
+        <div class="topbar-actions">
+          <span class="live-chip"><span class="status-dot" aria-hidden="true"></span>Live</span>
+          <button type="button" class="icon-btn" id="refresh" aria-label="Refresh data" title="Refresh data">
+            <svg class="icon" aria-hidden="true"><use href="#i-refresh"/></svg>
+          </button>
+        </div>
+      </header>
+
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden>
+        <span class="notice-mark" aria-hidden="true"></span><span id="notice-text"></span>
+      </div>
+
+      <section id="dashboard" class="page active">
+        <div class="vitals">
+          <article class="vital">
+            <span class="vital-label">Donors on record</span>
+            <strong class="vital-value" id="donor-count">—</strong>
+            <span class="vital-meta">Registered donor files</span>
+          </article>
+          <article class="vital">
+            <span class="vital-label">Units on hand</span>
+            <strong class="vital-value" id="unit-count">—</strong>
+            <span class="vital-meta">Across all blood groups</span>
+          </article>
+          <article class="vital">
+            <span class="vital-label">Groups stocked</span>
+            <strong class="vital-value"><span id="group-count">—</span><span class="vital-denom">/ 8</span></strong>
+            <span class="vital-meta">Groups holding at least one unit</span>
+          </article>
+        </div>
+
+        <article class="panel-dark supply">
+          <header class="panel-head">
+            <div>
+              <p class="panel-kicker">Inventory</p>
+              <h2>Supply board</h2>
+            </div>
+            <div class="supply-tools">
+              <span class="specimen-code" aria-label="Inventory reference INV 08"><span class="barcode" aria-hidden="true"></span>INV · 08</span>
+              <button type="button" class="link-btn on-dark" data-go="inventory">Manage inventory
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+              </button>
+            </div>
+          </header>
+          <div class="supply-body">
+            <div class="supply-copy">
+              <p class="supply-summary" id="supply-summary">Reading the shelf</p>
+              <p class="supply-meta" id="supply-meta">—</p>
+            </div>
+            <div class="rack" id="dashboard-stocks" aria-label="Available units by blood group"></div>
+          </div>
+        </article>
+
+        <div class="dash-grid">
+          <article class="panel">
+            <header class="panel-head">
+              <div><p class="panel-kicker">Registry</p><h2>Recent donors</h2></div>
+              <button type="button" class="link-btn" data-go="donors">View all
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+              </button>
+            </header>
+            <div id="recent-donors" class="recent-list"></div>
+            <div class="panel-foot">
+              <span id="recent-count">—</span>
+              <button type="button" class="link-btn" data-go="add">Register donor
+                <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+              </button>
+            </div>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <div><p class="panel-kicker">Stock watch</p><h2>Groups to check</h2></div>
+            </header>
+            <div id="stock-watch" class="watch-list"></div>
+            <button type="button" class="link-btn watch-link" data-go="inventory">Open inventory
+              <svg class="icon" aria-hidden="true"><use href="#i-arrow-right"/></svg>
+            </button>
+          </article>
+        </div>
+      </section>
+
+      <section id="donors" class="page">
+        <article class="panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-kicker">Registry</p>
+              <h2>Donor directory</h2>
+              <p>Search and manage every donor record on this computer</p>
+            </div>
+            <button type="button" class="btn primary" data-go="add">
+              <svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg>Add donor
+            </button>
+          </header>
+          <div class="table-tools">
+            <label class="search-field">
+              <svg class="icon" aria-hidden="true"><use href="#i-search"/></svg>
+              <input id="search" type="search" placeholder="Search name, ID or blood group" aria-label="Search donors" autocomplete="off">
+              <kbd>/</kbd>
+            </label>
+            <span class="table-count" id="donor-result-count">—</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr><th scope="col">Donor</th><th scope="col">Age</th><th scope="col">Gender</th><th scope="col">Blood group</th><th scope="col">Weight</th><th scope="col">Phone</th><th scope="col">Actions</th></tr>
+              </thead>
+              <tbody id="donor-rows"></tbody>
+            </table>
+          </div>
+        </article>
+      </section>
+
+      <section id="add" class="page">
+        <div class="form-layout">
+          <article class="panel form-panel">
+            <header class="panel-head">
+              <div>
+                <p class="panel-kicker">New record</p>
+                <h2 id="form-heading">Donor details</h2>
+                <p id="form-subtitle">Add a donor to the local registry</p>
+              </div>
+            </header>
+            <form id="donor-form">
+              <input type="hidden" id="edit-id">
+              <p class="form-legend">Identity</p>
+              <div class="form-grid">
+                <label class="field"><span>Full name</span><input id="name" required maxlength="63" placeholder="Donor full name" autocomplete="name"></label>
+                <label class="field"><span>Blood group</span>
+                  <select id="blood_group" required>
+                    <option value="">Select group</option><option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                    <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                  </select>
+                </label>
+                <label class="field"><span>Age</span><input id="age" type="number" min="1" max="120" required placeholder="Years"></label>
+                <label class="field"><span>Gender</span>
+                  <select id="gender"><option value="M">Male</option><option value="F">Female</option><option value="O">Other</option></select>
+                </label>
+                <label class="field"><span>Weight</span><input id="weight" type="number" min="1" max="300" step="0.1" required placeholder="Kilograms"></label>
+                <label class="field"><span>Phone</span><input id="phone" maxlength="23" placeholder="Contact number" autocomplete="tel"></label>
+              </div>
+
+              <p class="form-legend">Donation</p>
+              <label class="check">
+                <input id="has_donated_before" type="checkbox">
+                <span><strong>Donated blood previously</strong><small>Add the last donation date if known</small></span>
+              </label>
+              <div id="date-fields" class="form-grid date-fields" hidden>
+                <label class="field"><span>Day</span><input id="day" type="number" min="1" max="31" placeholder="DD"></label>
+                <label class="field"><span>Month</span><input id="month" type="number" min="1" max="12" placeholder="MM"></label>
+                <label class="field"><span>Year</span><input id="year" type="number" min="1900" max="2100" placeholder="YYYY"></label>
+              </div>
+
+              <div class="form-actions">
+                <button class="btn primary" type="submit" id="save-btn">Save donor</button>
+                <button class="btn ghost" type="button" id="clear-btn">Clear form</button>
+              </div>
+            </form>
+          </article>
+
+          <aside class="form-aside">
+            <div class="slip">
+              <div class="slip-head"><span>Donor record</span><span class="barcode light" aria-hidden="true"></span></div>
+              <div class="slip-body">
+                <span class="slip-label">Blood group</span>
+                <strong class="slip-group" id="slip-group">—</strong>
+                <div class="slip-name" id="slip-name">New donor</div>
+                <div class="slip-meta">
+                  <span id="slip-id">ID pending</span><span id="slip-age">Age —</span><span id="slip-weight">Weight —</span>
+                </div>
+              </div>
+              <div class="slip-foot"><span class="status-dot" aria-hidden="true"></span>Local record · not synced</div>
+            </div>
+            <div class="aside-note">
+              <h3>Before you save</h3>
+              <ul>
+                <li>Blood group is required for the record</li>
+                <li>Donation history is optional</li>
+                <li>Records are written to this computer only</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="inventory" class="page">
+        <article class="panel">
+          <header class="panel-head">
+            <div>
+              <p class="panel-kicker">Inventory</p>
+              <h2>Units by blood group</h2>
+              <p>Current stock held on this computer</p>
+            </div>
+            <span class="total-figure"><strong id="inventory-total">— units</strong><small>Total on hand</small></span>
+          </header>
+          <div id="inventory-stocks" class="stock-grid"></div>
+        </article>
+
+        <div class="inventory-actions">
+          <article class="panel">
+            <header class="panel-head">
+              <div><p class="panel-kicker">Receive</p><h2>Restock units</h2><p>Add new units to a blood group</p></div>
+            </header>
+            <form id="restock-form" class="mini-form">
+              <label class="field"><span>Blood group</span><select id="restock-group" required></select></label>
+              <label class="field"><span>Units</span><input id="restock-units" type="number" min="1" max="100000" required placeholder="0"></label>
+              <button class="btn primary" type="submit">Add units</button>
+            </form>
+          </article>
+
+          <article class="panel">
+            <header class="panel-head">
+              <div><p class="panel-kicker">Release</p><h2>Dispense units</h2><p>Deduct units from a blood group</p></div>
+            </header>
+            <form id="dispense-form" class="mini-form">
+              <label class="field"><span>Blood group</span><select id="dispense-group" required></select></label>
+              <label class="field"><span>Units</span><input id="dispense-units" type="number" min="1" max="100000" required placeholder="0"></label>
+              <button class="btn secondary" type="submit">Dispense units</button>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <span>Blood Bank Management System</span>
+        <span>Local application · stored on this computer</span>
+      </footer>
+    </div>
   </main>
+
   <script src="app.js"></script>
-</body></html>
+</body>
+</html>
