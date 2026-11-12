@@ -1,12 +1,13 @@
 """Local-only HTTP bridge. The C executable remains the data/business-logic owner."""
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
+import sys
 import json
 import subprocess
 import urllib.parse
 
 ROOT = Path(__file__).resolve().parents[1]
-CLI = ROOT / "bin" / "bb_cli"
+CLI = ROOT / "bin" / ("bb_cli.exe" if sys.platform == "win32" else "bb_cli")
 FRONTEND = ROOT / "frontend"
 
 
