@@ -2,6 +2,8 @@
 
 A local, single-computer project with a C99 backend, independent terminal interface, command-line adapter, Python standard-library HTTP bridge, and vanilla HTML/CSS/JavaScript frontend.
 
+brief video walkthrough = https://github.com/user-attachments/assets/f765356b-8d5f-4b13-90a1-30900fc2c05a
+
 ## Requirements
 - GCC
 - GNU Make
