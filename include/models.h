@@ -32,7 +32,7 @@ typedef struct {
     double weight;
     char blood_group[BLOOD_GROUP_LEN];
     char phone[PHONE_LEN];
-    Date last_donation;
+    Date last_donation;  // IT IS A NESTED STRUCT DATE IS CALLED INSIDE DONOR'D STRUCT
     bool has_donated_before;
 } Donor;
 typedef struct { char blood_group[BLOOD_GROUP_LEN]; uint32_t units; } BloodStock; // Pairs a blood type string ("A-") with an integer count of how many bags (units) are available.
