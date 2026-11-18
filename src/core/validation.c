@@ -1,11 +1,11 @@
 #include <stdio.h>
-#include <string.h>
-#include <time.h>
-#include "core.h"
+#include <string.h> // tring manipulation library. Used for strcmp to compare string values (e.g., checking if user input matches "A+").
+#include <time.h> // C time library. Used to fetch the computer's real-world clock data
+#include "core.h" // our header file
 
-const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"};
-char core_last_error[256] = "";
-
+const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS] = {"A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"}; // This is where the physical memory is allocated on computer's RAM,
+//and the actual text values ("A+", "O-", etc.) are written inside the decleration was done in models.h
+char core_last_error[256] = ""; // This is the exact spot where the physical 256-byte memory box is actually created. Every other file just looks at it via extern the decleration was done in core.h
 int core_find_blood_group(const char *group) {
     int i;
     if (!group) return -1;
