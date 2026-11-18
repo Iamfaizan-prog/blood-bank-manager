@@ -30,27 +30,12 @@ typedef struct Donor{
     double weight; //stored in 8 bytes
     char blood_group[BLOOD_GROUP_LEN]; //blood_group[4] defined above
     char phone[PHONE_LEN]; //phone[24]
-<<<<<<< HEAD
     Date last_donation; //nested structure 
-=======
-    Date last_donation; //nested structure  // IT IS A NESTED STRUCT DATE IS CALLED INSIDE DONOR'D STRUCT
->>>>>>> 1efadf22023828876ab4d42e8810fd99e70a865f
     bool has_donated_before;
 } Donor;
 typedef struct BloodStock{ 
 char blood_group[BLOOD_GROUP_LEN];  
 uint32_t units; 
-<<<<<<< HEAD
-} BloodStock; // Pairs a blood type string ("A-") with an integer count of how many bags (units) are available.
-
-typedef struct BloodInventory{
- BloodStock stocks[NUM_BLOOD_GROUPS];  //stocks[8]
-uint32_t total_units;
- } BloodInventory; // It creates an array of 8 BloodStock rows (stocks[8]), and adds a total_units counter at the bottom so you don't have to manually sum up all 8 types every time you want the grand total.
-
-extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; //extern means this variable is only declared here and its real value is in other c file
-#endif //endif: Closes the header guard statement opened on line 1.
-=======
 } BloodStock;
 typedef struct BloodInventory{
  BloodStock stocks[NUM_BLOOD_GROUPS];  //stocks[8]
@@ -58,5 +43,4 @@ uint32_t total_units;
  } BloodInventory;
 extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; //extern means this variable is only declared here and its real value is in other c file
 #endif  //endif: Closes the header guard statement opened on line 1.
->>>>>>> 1efadf22023828876ab4d42e8810fd99e70a865f
 //line 39-> const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; is a  pointer pointing towards a string which we cant change bcz blood groups cant be changed
