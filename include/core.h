@@ -1,10 +1,12 @@
-#ifndef CORE_H
-#define CORE_H
-#include "models.h"
-#include <stddef.h>
-extern char core_last_error[256];
-bool core_init(BloodInventory *inventory);
-int core_find_blood_group(const char *group);
+// Stops core.h from being pasted twice and causing a compiler stroke. it checks if it has read this file already?
+#ifndef WATERMELON // we have used watermelon here cuz it can be anything it is just a flag it checks for it sees if it is there if yes so skip the file if not put a flag/stickynote so next time the compiler reads it can see the flag and skip the file 
+#define WATERMELON
+
+#include "models.h" //includes the models.h file we made for structs to be used
+#include <stddef.h> // Imports size_t, a specialized data type used for counting things safely (like array sizes and loop counters) without risking memory overflows.
+extern char core_last_error[256]; //searches enitre codebase for error and if found prints it
+bool core_init(BloodInventory *inventory); // a boolean to see if everything boots up and works or not 
+int core_find_blood_group(const char *group); 
 void core_get_today(Date *today);
 bool core_check_eligibility(int age, double weight, bool has_donated, const Date *last, const Date *today);
 bool core_get_all_donors(Donor *records, size_t capacity, size_t *count);
