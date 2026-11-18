@@ -1,0 +1,99 @@
+[33mcommit 0e061147ace9cae01cbb73ea9d5d7ca94fd08430[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Merge: 3c2c4cf 0b5f51e
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Wed Nov 18 12:40:15 2026 +0500
+
+    Merge branches 'main' and 'main' of https://github.com/Iamfaizan-prog/frontendbldmgmsys
+
+[33mcommit 3c2c4cffd9d6aab1be6254768de02f64e2488da9[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Wed Nov 18 12:34:32 2026 +0500
+
+    more comments
+
+[33mcommit 0b5f51e475a323cb7bfa5586085a9ab59431beef[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: b92d925 de6ffba
+Author: Kashaf Ayaz <kashafayaz18@gmail.com>
+Date:   Wed Nov 18 10:35:14 2026 +0500
+
+    Merge branch 'main' of https://github.com/Iamfaizan-prog/blood-bank-manager
+
+[33mcommit b92d925d6e3ac2d210388037132275fffc9b9558[m
+Author: Kashaf Ayaz <kashafayaz18@gmail.com>
+Date:   Wed Nov 18 10:24:19 2026 +0500
+
+    comments
+
+[33mcommit de6ffba6db34db4ad595f6b25c4ae39c49ce86d4[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 17 21:47:20 2026 +0500
+
+    check env
+
+[33mcommit a9fb5ed2fdb4c3b74354caa48a38a3b88161ab6d[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 17 21:26:30 2026 +0500
+
+    AGAIN comments added in models.h
+
+[33mcommit 61aece57053eef11f1b5c8e9f6eb8e2baf2541bf[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 17 21:04:25 2026 +0500
+
+    comments added in models.h
+
+[33mcommit 85e78bd77ef160f98ab4804426c5c02b3f080d0f[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 17 20:54:34 2026 +0500
+
+    comments adding
+
+[33mcommit 9222c6173bee81e28f1a6a013f9c6003805324fc[m
+Author: Kashaf Ayaz <kashafayaz18@gmail.com>
+Date:   Fri Nov 13 14:53:24 2026 +0500
+
+    changes in fields
+
+[33mcommit 9c5db619a3d5c29191b637f0306b7a13fb98517b[m
+Author: FAIZAN <faizanlinuxx@gmail.com>
+Date:   Fri Nov 13 14:11:40 2026 +0500
+
+    Add video walkthrough link to README
+    
+    Added a link to a brief video walkthrough of the project.
+
+[33mcommit 2e5030d28ff821f575e6d4c3458656545c80c29e[m
+Author: Areeba Farooq <areebafarooq27@gmail.com>
+Date:   Thu Nov 12 20:35:24 2026 +0500
+
+    changes in html
+
+[33mcommit a00ea45a7c4439dc89532cde30e152b51c904dee[m
+Author: Areeba Farooq <areebafarooq27@gmail.com>
+Date:   Thu Nov 12 20:33:19 2026 +0500
+
+    Changes in donor page
+
+[33mcommit f8322bcb6496bd920c3f2d2426a7c5f1df5106f6[m
+Author: Areeba Farooq <areebafarooq27@gmail.com>
+Date:   Thu Nov 12 15:48:20 2026 +0500
+
+    changes in frontend text
+
+[33mcommit fa46e537a1d2708cc876794acadb275bf972434a[m
+Author: Areeba Farooq <areebafarooq27@gmail.com>
+Date:   Thu Nov 12 15:36:03 2026 +0500
+
+    fix path for windows
+
+[33mcommit 210c0d13a1ae3cf10a01e39b0aa66114d643cb85[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 10 12:09:30 2026 +0500
+
+    better frontend
+
+[33mcommit db0b6fdbce6023a619a0a3016a24bf3da60abf7b[m
+Author: faizan <faizanlinuxx@gmail.com>
+Date:   Tue Nov 3 15:06:58 2026 +0500
+
+    .
