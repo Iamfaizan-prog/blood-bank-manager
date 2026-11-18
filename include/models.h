@@ -1,11 +1,16 @@
+//this file is a blue print and set of rules that the entire programme has to follow
+ //two main structs defined here are donor and date that will be used later
+
 #ifndef MODELS_H
 #define MODELS_H
-#include <stdbool.h>
-#include <stdint.h>
+#include <stdbool.h>  //gives us proper true and false boolean conditions instead of using wierd 0 and 1
+#include <stdint.h>  // provides us with precision integer types like uint32_t so the precison remains same all across the system
+
 #define NUM_BLOOD_GROUPS 8
-#define BLOOD_GROUP_LEN 4
+#define BLOOD_GROUP_LEN 4 // it tells the blood group will require length four like ab- plus the null charaacter which c uses to know where the string ended
 #define NAME_LEN 64
 #define PHONE_LEN 24
+// below are file paths hardcoded to tell where the data gets saved
 #define DATA_DIR "data"
 #define DONOR_FILE "data/donors.dat"
 #define INVENTORY_FILE "data/inventory.dat"
@@ -31,11 +36,13 @@ typedef struct Donor{
 typedef struct BloodStock{ 
 char blood_group[BLOOD_GROUP_LEN];  
 uint32_t units; 
-} BloodStock;
+} BloodStock; // Pairs a blood type string ("A-") with an integer count of how many bags (units) are available.
+
 typedef struct BloodInventory{
  BloodStock stocks[NUM_BLOOD_GROUPS];  //stocks[8]
 uint32_t total_units;
- } BloodInventory;
+ } BloodInventory; // It creates an array of 8 BloodStock rows (stocks[8]), and adds a total_units counter at the bottom so you don't have to manually sum up all 8 types every time you want the grand total.
+
 extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; //extern means this variable is only declared here and its real value is in other c file
-#endif
+#endif //endif: Closes the header guard statement opened on line 1.
 //line 39-> const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; is a  pointer pointing towards a string which we cant change bcz blood groups cant be changed
