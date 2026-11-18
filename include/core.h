@@ -5,6 +5,9 @@
 #include "models.h" //includes the models.h file we made for structs to be used
 #include <stddef.h> // //ts is a standard c file used for size Imports size_t, a specialized data type used for counting things safely (like array sizes and loop counters) without risking memory overflows.
 extern char core_last_error[256]; //searches enitre codebase for error and if found prints it
+
+// all the stuff below are function declarations that are defined in core.c file and are used in main.c file to perform various operations related to blood inventory and donor management.
+// Using bool for explicit pass/fail readability and strict type safety to catch invalid return values at compile time.
 bool core_init(BloodInventory *inventory); // a boolean to see if everything boots up and works or not 
 int core_find_blood_group(const char *group); 
 void core_get_today(Date *today);
