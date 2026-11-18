@@ -45,7 +45,7 @@ bool core_check_eligibility(int age, double weight, bool has_donated, const Date
     }
     if (has_donated) { // If the donor has donated before, we must check dates
         long a = date_number(last), b = date_number(today); // Convert both dates to total days for easy subtraction
-        if (a < 0 || b < 0 || b < a || b - a < MIN_DONATION_INTERVAL) { // If dates invalid, last is in future, or wait time is too short...
+        if (a < 0 || b < 0 || b < a || b - a < MIN_DONATION_INTERVAL) { // If dates invalid, last is in future, or wait time is too short
             snprintf(core_last_error, sizeof(core_last_error), "At least 90 days must pass since the last donation"); // Write error message
             return false; // Reject donor
         }
