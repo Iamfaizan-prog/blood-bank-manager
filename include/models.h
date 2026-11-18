@@ -1,12 +1,10 @@
-//this file is a blue print and set of rules that the entire programme has to follow i.e the minimum age to donate blood etc it uses prerprocessor so declar all the things before anything starts (#) if anything goes against they replace/override it with what is already set
-// //two main structs defined here are donor and date that will be used later
+//this file is a blue print and set of rules that the entire programme has to follow
+ //two main structs defined here are donor and date that will be used later
 
-#ifndef MODELS_H  // #ifndef checks if the called header is only used once in the compilation process if it is already used it stops it so we dont get dupication errors
-#define MODELS_H // define continues if the indef is right so it starts the furhter stages
-#include <stdbool.h> //gives us proper true and false boolean conditions instead of using wierd 0 and 1
-#include <stdint.h> // provides us with precision integer types like uint32_t so the precison remains same all across the system
-
-//below are all the preprocessor defined which replace all there respective conditions and parts they need to be there we used this so if someone cahnges something we wont have to mannualy replace 1000s repetitions of same rule all across the program
+#ifndef MODELS_H
+#define MODELS_H
+#include <stdbool.h>  //gives us proper true and false boolean conditions instead of using wierd 0 and 1
+#include <stdint.h>  // provides us with precision integer types like uint32_t so the precison remains same all across the system
 
 #define NUM_BLOOD_GROUPS 8
 #define BLOOD_GROUP_LEN 4 // it tells the blood group will require length four like ab- plus the null charaacter which c uses to know where the string ended
@@ -32,7 +30,7 @@ typedef struct Donor{
     double weight; //stored in 8 bytes
     char blood_group[BLOOD_GROUP_LEN]; //blood_group[4] defined above
     char phone[PHONE_LEN]; //phone[24]
-    Date last_donation; //nested structure  // IT IS A NESTED STRUCT DATE IS CALLED INSIDE DONOR'D STRUCT
+    Date last_donation; //nested structure 
     bool has_donated_before;
 } Donor;
 typedef struct BloodStock{ 
