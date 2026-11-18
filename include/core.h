@@ -1,7 +1,7 @@
 #ifndef CORE_H
 #define CORE_H
 #include "models.h"
-#include <stddef.h>
+#include <stddef.h> //ts is a standard c file used for size
 extern char core_last_error[256];
 bool core_init(BloodInventory *inventory);
 int core_find_blood_group(const char *group);

@@ -14,19 +14,28 @@
 #define MIN_DONOR_WEIGHT 50.0
 #define MIN_DONATION_INTERVAL 90
 
-typedef struct { int day, month, year; } Date;
-typedef struct {
-    uint32_t id;
-    char name[NAME_LEN];
-    int age;
-    char gender;
-    double weight;
-    char blood_group[BLOOD_GROUP_LEN];
-    char phone[PHONE_LEN];
-    Date last_donation;
+typedef struct Date{
+    int day, month, year;
+} Date;
+typedef struct Donor{
+    uint32_t id; //unsigned integer 4 bytes only positive no and zero are stored not negative
+    char name[NAME_LEN]; //name[64] defined above
+    int age; //stored in 4 byte
+    char gender; //stored in 1 byte
+    double weight; //stored in 8 bytes
+    char blood_group[BLOOD_GROUP_LEN]; //blood_group[4] defined above
+    char phone[PHONE_LEN]; //phone[24]
+    Date last_donation; //nested structure 
     bool has_donated_before;
 } Donor;
-typedef struct { char blood_group[BLOOD_GROUP_LEN]; uint32_t units; } BloodStock;
-typedef struct { BloodStock stocks[NUM_BLOOD_GROUPS]; uint32_t total_units; } BloodInventory;
-extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS];
+typedef struct BloodStock{ 
+char blood_group[BLOOD_GROUP_LEN];  
+uint32_t units; 
+} BloodStock;
+typedef struct BloodInventory{
+ BloodStock stocks[NUM_BLOOD_GROUPS];  //stocks[8]
+uint32_t total_units;
+ } BloodInventory;
+extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; //extern means this variable is only declared here and its real value is in other c file
 #endif
+//line 39-> const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; is a  pointer pointing towards a string which we cant change bcz blood groups cant be changed
