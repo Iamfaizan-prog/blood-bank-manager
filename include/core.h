@@ -1,10 +1,9 @@
 #ifndef CORE_H // If CORE_H is not defined yet...
 #define CORE_H // ...define it now prevents double including
 
-#include "models.h" // Blueprints for custom types like BloodInventory and Donor
-#include <stddef.h> // Standard C library providing size_t for memory sizes
-
-extern char core_last_error[256]; // Global string to store the latest error message
+#include "models.h" //includes the models.h file we made for structs to be used
+#include <stddef.h> // //ts is a standard c file used for size Imports size_t, a specialized data type used for counting things safely (like array sizes and loop counters) without risking memory overflows.
+extern char core_last_error[256]; //searches enitre codebase for error and if found prints it
 
 // --- System & Utilities ---
 bool core_init(BloodInventory *inventory); //its job is to prepare the main_inventory so the rest of the program doesn't crash.
