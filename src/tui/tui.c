@@ -9,8 +9,7 @@ static void read_line(const char *prompt, char *buffer, size_t size) {
     printf("%s", prompt); // Display prompt to user
     // Read up to 'size' characters from keyboard (stdin); if it fails, empty the string
     if (!fgets(buffer, (int)size, stdin)) { buffer[0] = '\0'; return; }
-    // Find the Enter key (\r or \n) at the end and replace it with '\0' (end of string)
-    buffer[strcspn(buffer, "\r\n")] = '\0';
+    buffer[strcspn(buffer, "\r\n")] = '\0'; // strcspn find the Enter key (\r or \n) at the end and replace it with '\0' (end of string)
 }
 
 // Keeps asking until the user enters a valid whole number
