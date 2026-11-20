@@ -123,4 +123,19 @@ int cli_run(int argc, char **argv) {
     }
 
     // COMMAND 7: "stock-add <group> <units>" OR "stock-deduct <group> <units>" (4 words total)
-    if ((strcmp(argv[1], "stock-add") == 0 || strcmp(argv[1], "stock-deduct") == 0) && argc ==
+    if ((strcmp(argv[1], "stock-add") == 0 || strcmp(argv[1], "stock-deduct") == 0) && argc == 4) {
+        number = strtoul(argv[3], &end, 10);
+        if (*end || number == 0) return fail("Invalid quantity"); // Must be a clean number > 0
+        // Ternary operator (? :) calls core_add_units for "stock-add", or core_deduct_units for "stock-deduct"
+        if (strcmp(argv[1], "stock-add") == 0 ? !core_add_units(&inv, argv[2], (uint32_t)number) : !core_deduct_units(&inv, argv[2], (uint32_t)number)) {
+            return fail(core_last_error);
+        }
+        puts("{\"ok\":true}"); return 0;
+    }
+
+    // Fallback error if user typed an unknown command or wrong number of arguments
+    return fail("Unknown command or incorrect arguments");
+}
+
+// Entry point for bb_cli.exe: forwards terminal arguments directly to cli_run[cite: 1]
+int main(int argc, char **argv) { return cli_run(argc, argv); }
