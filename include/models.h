@@ -1,5 +1,5 @@
 //this file is a blue print and set of rules that the entire programme has to follow
- //two main structs defined here are donor and date that will be used later
+ //two main structs defined here are donor , bloodstock,BloodInventory and date that will be used later
 
 #ifndef MODELS_H
 #define MODELS_H
@@ -43,4 +43,4 @@ uint32_t total_units;
  } BloodInventory;
 extern const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; //extern means this variable is only declared here and its real value is in other c file
 #endif  //endif: Closes the header guard statement opened on line 1.
-//line 39-> const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; is a  pointer pointing towards a string which we cant change bcz blood groups cant be changed
+//line 44-> const char *VALID_BLOOD_GROUPS[NUM_BLOOD_GROUPS]; is a  pointer pointing towards a string which we cant change bcz blood groups cant be changed

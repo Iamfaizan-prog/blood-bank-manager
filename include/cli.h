@@ -11,5 +11,7 @@
 // Output:
 // - int: Returns 0 to the operating system if successful, or another number (like 1) if there was an error.
 int cli_run(int argc, char **argv);
-
+//So *argv is the first string (argv[0]), and **argv is the first character of that string ('.').
+//We use argv to receive command-line input. It's a char ** because it's an array of strings of different lengths, 
+// so each string is a char * and the array of them is a pointer to those."
 #endif 

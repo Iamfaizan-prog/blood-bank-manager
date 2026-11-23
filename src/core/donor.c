@@ -1,3 +1,4 @@
+//CRUD (Create, Read, Update, Delete) operations
 #include <stdio.h> 
 #include <string.h> 
 #include "core.h" // Include the core header file 
