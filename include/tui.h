@@ -1,14 +1,19 @@
-#ifndef TUI_H 
+// FILE: tui.h
+// PURPOSE: Public API for the Text User Interface (TUI).
+//          Provides an interactive, menu-driven terminal experience for the user.
 
-// --- Text User Interface (TUI) Blueprint ---
-// This function launches an interactive, visual menu in the terminal.
-// Instead of requiring the user to type complex commands upfront, 
-// it will guide them step-by-step using on-screen prompts.
+#ifndef TUI_H
+#define TUI_H
+
+// 1. TUI ENTRY POINT
+// Launches the interactive visual menu loop in the terminal, guiding the user
+// step-by-step through on-screen prompts instead of requiring upfront CLI flags.
 //
-// Inputs: (void) - Takes no arguments. It doesn't need argc/argv because 
-//                  it asks for user input AFTER the menu is already on screen.
-// Output: void   - Returns nothing. The function runs in a loop until the 
-//                  user chooses to exit the program.
+// Parameters:
+//   void - Takes no arguments (no argc/argv needed since input is gathered interactively).
+//
+// Returns:
+//   void - Runs continuously in a menu loop until the user chooses to exit.
 void tui_run(void);
 
-#endif 
+#endif // End of TUI_H header guard
